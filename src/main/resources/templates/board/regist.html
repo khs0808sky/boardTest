@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{board.registPage}"></title>
+    <script type="text/javascript">
+        function check() {
+            var title = document.getElementById("title");
+            var content = document.getElementById("content");
+            if (title.value == null) {
+                alert("아이디를 입력하세요.");
+                return;
+            }
+            if (content.value == null) {
+                alert("비밀번호를 입력하세요");
+                return;
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1 th:text="#{board.registDisplay}"></h1>
+    <form method="post" th:action="@{/board/regist}" th:object="${registForm}">
+        <dl>
+            <dt th:text="#{titleText}"></dt>
+            <dd>
+                <input type="text" name="title" id="title" th:field="*{title}">
+                <div th:each="err : ${#fields.errors('title')}" th:text="${err}"></div>
+            </dd>
+        </dl>
+        <dl>
+            <dt th:text="#{contentText}"></dt>
+            <dd>
+                <textarea name="content" id="content" th:field="*{content}"></textarea>
+                <div th:each="err : ${#fields.errors('content')}" th:text="${err}"></div>
+            </dd>
+        </dl>
+        <button type="submit" th:text="#{registButton}"></button>
+    </form>
+    <br>
+    <br>
+    <a th:href="@{/}" th:text="#{board.main}"></a>
+    <a th:href="@{/board/list}" th:text="#{board.list}"></a>
+</body>
+</html>

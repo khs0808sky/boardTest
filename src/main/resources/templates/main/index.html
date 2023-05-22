@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{board.mainPage}"></title>
+</head>
+<body>
+   <h1 th:text="#{board.mainDisplay}"></h1>
+   <a th:href="@{/board/regist}" th:text="#{board.regist}"></a>
+   <a th:href="@{/board/list}" th:text="#{board.list}"></a>
+</body>
+</html>
